@@ -13,10 +13,6 @@ This projects aims to fetch SSL certificates using socket connections and then a
 ## Installation
 Fork this repository.
 
-```
-git clone https://github.com/techmatlock/terraform-jenkins-vsphere-vm.git
-```
-
 1. Export DNS A records from Windows DNS or other DNS provider.
 2. Format records so they look like the example in the websites/ folder.
 3. The cronjob runs the preprocess_data.py module every night at 11:59PM.  
