@@ -1,0 +1,11 @@
+default:
+  before_script:
+    - docker info
+    - docker stop $(docker ps -aq)
+    - docker rm $(docker ps -aq)
+
+
+build_image:
+  script:
+    - docker build -t my-flask-app .
+    - docker run -d -p 5000:5000 --restart unless-stopped my-flask-app

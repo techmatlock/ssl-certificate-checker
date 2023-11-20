@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL Certificate Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .main-container {
+            display: flex;
+        }
+        .container {
+            max-width: 700px;
+            background-color: #f2f2f2;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+        .flex-container {
+            display: flex;
+            align-items: flex-start;
+        }
+        .button-container {
+            margin-right: 20px;
+        }
+        .column {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .additional-container {
+            margin-left: 20px;
+            max-width: 700px;
+            background-color: #f2f2f2;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 50px;
+        }
+        .row span:nth-child(1) {
+        flex: none; /* Override flex-1 if it's set by other CSS */
+        width: 200px; /* Or whatever width you prefer */
+        }
+        .row span.long-text {
+        white-space: normal; /* This allows the text to wrap */
+        word-wrap: break-word; /* This will break long words if necessary */
+        }
+        .urgent { color: red; }
+        .warning { color: orange; } /* Changed to orange for better visibility */
+        .normal { color: green; }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="button-container">
+        <a href="/download" download>
+            <button type="button">Export To CSV</button>
+        </a>
+        </div>
+    <div class="main-container">
+        <div class="container">
+            <div class="column">
+                <h2>Certificate Expiration</h2>
+                <ul>
+                    {% for domain, expiry_date, remaining_days in results %}
+                        {% if remaining_days <= 30 %}
+                            {% set class_name = 'urgent' %}
+                            <li class="row">
+                                <span class="long-text">{{ domain }}</span>
+                                <span>{{ expiry_date }}</span>
+                                <span class="{{ class_name }}">{{ remaining_days }} days left</span>
+                            </li>
+                        {% elif remaining_days <= 60 %}
+                            {% set class_name = 'warning' %}
+                            <li class="row">
+                                <span class="long-text">{{ domain }}</span>
+                                <span>{{ expiry_date }}</span>
+                                <span class="{{ class_name }}">{{ remaining_days }} days left</span>
+                            </li>
+                        {% else %}
+                            {% set class_name = 'normal' %}
+                            <li class="row">
+                                <span class="long-text">{{ domain }}</span>
+                                <span>{{ expiry_date }}</span>
+                                <span class="{{ class_name }}">{{ remaining_days }} days left</span>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="additional-container">
+            <div class="column">
+                <h2>Failures</h2>
+                <ul>
+                    {% for exception in exceptions %}
+                    <li>{{ exception }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
