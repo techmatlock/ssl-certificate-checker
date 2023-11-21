@@ -1,7 +1,7 @@
 # Python Web App SSL Checker
 
 ## Description
-This projects aims to fetch SSL certificates using socket connections and then append the returned information to a list.  Python Flask handles the routing and displays the HTML on the frontend.
+This projects aims to fetch SSL certificates using socket connections and then append the returned information to a list.  Python Flask handles the backend routing and renders an HTML template.
 
 ## Demo
 
@@ -13,11 +13,12 @@ This projects aims to fetch SSL certificates using socket connections and then a
 ## Installation
 Fork this repository.
 
-1. Export DNS A records from Windows DNS or other DNS provider.
-2. Format records so they look like the example in the websites/ folder.
-3. The cronjob runs the preprocess_data.py module every night at 11:59PM.  
+1. Install packages - pip install -r requirements.txt
+2. Export DNS A records from Windows DNS or other DNS provider.
+3. Format records so they look like the example in the websites/ folder.
+4. The cronjob runs the preprocess_data.py module every night at 11:59PM.  
    preprocess_data is the module that collects all the SSL data to display on the frontend.
-4. (Optional) route53.py can be run separately if you have A records in AWS Route53.
+5. (Optional) route53.py can be run separately if you have A records in AWS Route53.
 
 ## Usage
 
