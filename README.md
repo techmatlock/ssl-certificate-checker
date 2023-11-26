@@ -1,7 +1,7 @@
 # Python Web App SSL Checker
 
 ## Description
-This projects aims to fetch SSL certificates using socket connections and then append the returned information to a list.  Python Flask handles the backend routing and renders an HTML template.
+This projects aims to fetch SSL certificates using socket connections and then append the returned information to a list.  Python Flask handles the backend and renders an HTML template.
 
 ## Demo
 
