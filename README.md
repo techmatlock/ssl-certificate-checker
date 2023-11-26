@@ -28,15 +28,13 @@ git clone https://github.com/techmatlock/ssl-certificate-checker.git
 
 ## Usage
 
-1. (Optional) You can either let GitLab build the container via CICD (with .gitlab-ci.yml file) 
+* (Optional) You can either let GitLab build the container via CICD (with .gitlab-ci.yml file) 
    or you can run the app manually.
-2. When you go to the Flask app in the browser, the Failures section is for any websites 
+* When you go to the Flask app in the browser, the Failures section is for any websites 
    that were unreachable by the program.  The cronjob runs the preprocess_data.py module every night at 11:59PM.  
    preprocess_data is the module that collects all the SSL certificate data.
    Unreachable failures could be for reasons including: A record exists but not pointed to any host.  Or special authentication methods (i.e. Mutual TLS, SSO).
-3. (Optional) route53.py can be run separately if you have A records in AWS Route53.
-
-## Configuration
+* (Optional) route53.py can be run separately if you have A records in AWS Route53.
 
 ## Contributing
 Contributions to this project are welcome. Please fork the repository and submit a pull request.
