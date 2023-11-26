@@ -13,8 +13,6 @@ This projects aims to fetch SSL certificates using socket connections and then a
 * Docker Engine <= 24.0.7
 
 ## Installation
-Fork this repository.
-
 1. Clone this repository to your local machine.
 ```
 git clone https://github.com/techmatlock/ssl-certificate-checker.git
