@@ -28,7 +28,7 @@ git clone https://github.com/techmatlock/ssl-certificate-checker.git
 
 ## Usage
 
-* (Optional) You can either let GitLab build the container via CICD (with .gitlab-ci.yml file) 
+* (Optional) You can either configure GitLab CICD to build the Docker container (with .gitlab-ci.yml file) 
    or you can run the app manually.
 * When you go to the Flask app in the browser, the Failures section is for any websites 
    that were unreachable by the program.  The cronjob runs the preprocess_data.py module every night at 11:59PM.  
