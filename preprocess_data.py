@@ -1,5 +1,5 @@
 import socket, ssl, threading
-from datetime import datetime
+from datetime import datetime, timezone
 from send_email import send_email
 import json, os, csv
 
@@ -10,13 +10,14 @@ def format_date(cert):
     # Parse the input string into a datetime object
     date_time_obj = datetime.strptime(cert, input_format)
 
-    # Format the datetime object into the desired output format
-    expiry_date = date_time_obj
-    current_date = datetime.utcnow()
-    remaining_days = (expiry_date - current_date).days
+    # Convert date_time_obj to timezone-aware datetime (assuming the original time is in UTC)
+    expiry_date = date_time_obj.replace(tzinfo=timezone.utc)
+    current_date = datetime.now(timezone.utc) 
 
+    remaining_days = (expiry_date - current_date).days
     output_format = "%d %B %Y %I:%M %p"
     expiry_date = expiry_date.strftime(output_format)
+
     return expiry_date, remaining_days
 
 def get_server_certificate(domain, results, exceptions):
