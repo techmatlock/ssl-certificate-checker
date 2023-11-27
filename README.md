@@ -6,6 +6,7 @@ This projects aims to fetch SSL certificates using socket connections and then a
 ## Demo
 
 ![Screen Recording 2023-11-25 at 5 02 14 PM](https://github.com/techmatlock/ssl-certificate-checker/assets/2618095/cce7dc09-65b3-43f6-9611-71d27f82c9ec)
+<img width="1567" alt="Screenshot 2023-11-26 at 7 39 01 PM" src="https://github.com/techmatlock/ssl-certificate-checker/assets/2618095/2363373c-f032-427a-958d-22d69bb13a23">
 
 ## Prerequisites
 * Python <= 3.10.12 
